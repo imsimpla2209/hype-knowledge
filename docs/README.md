@@ -20,6 +20,7 @@ Hype Knowledge is a comprehensive RAG (Retrieval Augmented Generation) API with 
 - **Auth**: User authentication and token management
 - **Ingest**: Document processing and storage 
 - **Retrieve**: Vector, graph, and hybrid search capabilities
+- **Templates**: Structured data search for UI templates
 - **Knowledge**: Knowledge graph management for entity relationships
 
 ## Quick Start
@@ -41,4 +42,5 @@ All API endpoints require authentication using JSON Web Tokens (JWT). See the [A
 If you encounter any issues or have questions, please contact our support team.
 
 ## License
-Update soon
+
+[Include license information here] 

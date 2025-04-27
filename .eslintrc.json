@@ -1,0 +1,76 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb-base"
+    // "plugin:@typescript-eslint/recommended",
+    // "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
+  "rules": {
+    "prettier/prettier": "warn",
+    "import/extensions": [
+      "warn",
+      "ignorePackages",
+      {
+        "js": "never",
+        "ts": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "max-classes-per-file": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "camelcase": "warn",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "no-param-reassign": "warn",
+    "max-len": ["warn", { "code": 150 }],
+    "linebreak-style": "off",
+    "arrow-body-style": "off",
+    "comma-dangle": "warn",
+    "object-curly-newline": "off",
+    "object-curly-spacing": "warn",
+    "indent": ["warn", 2],
+    "no-plusplus": "off",
+    "no-restricted-syntax": "off",
+    "arrow-parens": "off",
+    "prefer-destructuring": "warn",
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "semi": ["warn", "always"],
+    "no-unused-vars": "warn",
+    "no-use-before-define": "warn",
+    "consistent-return": "warn",
+    "no-return-await": "warn",
+    "no-nested-ternary": "warn",
+    "no-multiple-empty-lines": ["warn", { "max": 2 }],
+
+    // Disable or reduce severity of chained call and formatting rules
+    "newline-per-chained-call": "off",
+    "dot-notation": "warn",
+    "function-paren-newline": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "no-confusing-arrow": "off",
+    "no-mixed-operators": "warn",
+    "brace-style": "warn",
+    "no-extra-semi": "warn",
+    "no-trailing-spaces": "warn"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  }
+}

@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+coverage
+.vscode
+*.json
+*.md
+*.log
+*.lock
+*.yml
+*.yaml
+*.env*
+public
+assets 

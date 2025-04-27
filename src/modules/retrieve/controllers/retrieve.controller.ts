@@ -23,7 +23,7 @@ export class RetrieveController {
   async healthCheck(req: Request, res: Response): Promise<void> {
     res.status(200).json({
       status: 'OK',
-      message: 'Retrieve service is healthy',
+      message: 'Retrieve service is healthy'
     });
   }
 
@@ -39,12 +39,12 @@ export class RetrieveController {
       maxTokens: config.maxTokens,
       supportsBatching: config.supportsBatching,
       supportsMultimodal: config.supportsMultimodal,
-      defaultSimilarityMetric: config.defaultSimilarityMetric,
+      defaultSimilarityMetric: config.defaultSimilarityMetric
     }));
 
     res.status(200).json({
       success: true,
-      models,
+      models
     });
   }
 
@@ -62,14 +62,14 @@ export class RetrieveController {
       // Return the results
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }
@@ -86,7 +86,7 @@ export class RetrieveController {
       // Set strategy to vector and validate
       const params = retrieveParamsSchema.parse({
         ...req.body,
-        strategy: RetrievalStrategy.VECTOR,
+        strategy: RetrievalStrategy.VECTOR
       });
 
       // Execute retrieval
@@ -95,14 +95,14 @@ export class RetrieveController {
       // Return the results
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }
@@ -119,7 +119,7 @@ export class RetrieveController {
       // Set strategy to graph and validate
       const params = retrieveParamsSchema.parse({
         ...req.body,
-        strategy: RetrievalStrategy.GRAPH,
+        strategy: RetrievalStrategy.GRAPH
       });
 
       // Execute retrieval
@@ -128,14 +128,14 @@ export class RetrieveController {
       // Return the results
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }

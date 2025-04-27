@@ -16,7 +16,7 @@ export interface Document {
 export enum RetrievalStrategy {
   VECTOR = 'vector',
   GRAPH = 'graph',
-  HYBRID = 'hybrid',
+  HYBRID = 'hybrid'
 }
 
 /**
@@ -107,5 +107,5 @@ export const retrieveParamsSchema = z.object({
   mergeStrategy: z.enum(['interleave', 'weighted', 'rerank']).optional().default('rerank'),
   vectorWeight: z.number().min(0).max(1).optional().default(0.7),
   embeddingModel: z.nativeEnum(EmbeddingModel).optional().default(EmbeddingModel.OPENAI_TEXT_3_SMALL),
-  similarityMetric: z.enum(['cosine', 'euclidean', 'dot_product']).optional(),
+  similarityMetric: z.enum(['cosine', 'euclidean', 'dot_product']).optional()
 });

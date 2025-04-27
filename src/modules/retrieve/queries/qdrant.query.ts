@@ -20,7 +20,7 @@ export class QdrantQueryAdapter {
   constructor() {
     this.client = new QdrantClient({
       url: config.QDRANT_URL,
-      ...(config.QDRANT_API_KEY ? { apiKey: config.QDRANT_API_KEY } : {}),
+      ...(config.QDRANT_API_KEY ? { apiKey: config.QDRANT_API_KEY } : {})
     });
 
     this.embeddingsCache = new Map();
@@ -40,8 +40,8 @@ export class QdrantQueryAdapter {
         model,
         new OpenAIEmbeddings({
           openAIApiKey: config.OPENAI_API_KEY,
-          modelName: modelConfig.name,
-        }),
+          modelName: modelConfig.name
+        })
       );
     }
 
@@ -65,7 +65,7 @@ export class QdrantQueryAdapter {
         similarityThreshold = 0.7,
         collectionName = 'documents',
         embeddingModel = EmbeddingModel.OPENAI_TEXT_3_SMALL,
-        similarityMetric,
+        similarityMetric
       } = params;
 
       // Get appropriate embeddings model
@@ -80,11 +80,11 @@ export class QdrantQueryAdapter {
           ? {
               searchOptions: {
                 searchParams: {
-                  metric: this.mapSimilarityMetric(similarityMetric),
-                },
-              },
+                  metric: this.mapSimilarityMetric(similarityMetric)
+                }
+              }
             }
-          : {}),
+          : {})
       });
 
       // Prepare filters for Qdrant
@@ -103,8 +103,8 @@ export class QdrantQueryAdapter {
             score,
             retrievalMethod: 'vector',
             embeddingModel,
-            dimensions: modelConfig.dimensions,
-          },
+            dimensions: modelConfig.dimensions
+          }
         }));
     } catch (error: unknown) {
       console.error('Error in Qdrant vector search:', error);
@@ -147,13 +147,13 @@ export class QdrantQueryAdapter {
     // more complex filter scenarios (ranges, arrays, etc.)
     const filterConditions = Object.entries(filters).map(([key, value]) => ({
       key: `metadata.${key}`,
-      match: { value },
+      match: { value }
     }));
 
     return {
       filter: {
-        must: filterConditions,
-      },
+        must: filterConditions
+      }
     };
   }
 }

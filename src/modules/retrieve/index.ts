@@ -1,12 +1,7 @@
 import { RetrieveService } from './services/retrieve.service';
 import { RetrieveController } from './controllers/retrieve.controller';
 import { RetrieveParams, RetrieveResult, RetrievalStrategy, Document } from './types/retrieve.types';
-import {
-  EmbeddingModelConfig,
-  EmbeddingProvider,
-  EmbeddingModelRetrieveParams,
-  EMBEDDING_MODEL_CONFIGS,
-} from './types/embedding-model.types';
+import { EmbeddingModelConfig, EmbeddingProvider, EmbeddingModelRetrieveParams, EMBEDDING_MODEL_CONFIGS } from './types/embedding-model.types';
 
 // Create singleton instances
 const retrieveService = new RetrieveService();
@@ -34,5 +29,5 @@ export {
   EmbeddingModelConfig,
   EmbeddingProvider,
   EmbeddingModelRetrieveParams,
-  EMBEDDING_MODEL_CONFIGS,
+  EMBEDDING_MODEL_CONFIGS
 };

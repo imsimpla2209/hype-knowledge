@@ -58,10 +58,7 @@ knowledgeRouter.post('/query', knowledgeGraphController.queryKnowledgeGraph.bind
  * @apiGroup Knowledge
  * @apiDescription Create a knowledge graph from text
  */
-knowledgeRouter.post(
-  '/create-from-text',
-  knowledgeGraphController.createKnowledgeGraphFromText.bind(knowledgeGraphController),
-);
+knowledgeRouter.post('/create-from-text', knowledgeGraphController.createKnowledgeGraphFromText.bind(knowledgeGraphController));
 
 /**
  * @api {post} /knowledge/merge Merge knowledge graphs
@@ -77,9 +74,6 @@ knowledgeRouter.post('/merge', knowledgeGraphController.mergeKnowledgeGraphs.bin
  * @apiGroup Knowledge
  * @apiDescription Update an entity's confidence level
  */
-knowledgeRouter.patch(
-  '/graph/:graphId/entity/:entityId/confidence',
-  knowledgeGraphController.updateEntityConfidence.bind(knowledgeGraphController),
-);
+knowledgeRouter.patch('/graph/:graphId/entity/:entityId/confidence', knowledgeGraphController.updateEntityConfidence.bind(knowledgeGraphController));
 
 export default knowledgeRouter;

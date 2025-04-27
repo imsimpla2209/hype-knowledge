@@ -1,11 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 import { KnowledgeGraphService } from '../services/knowledge.service';
-import {
-  createKnowledgeGraphSchema,
-  extractKnowledgeSchema,
-  queryKnowledgeGraphSchema,
-} from '../types/knowledge.types';
+import { createKnowledgeGraphSchema, extractKnowledgeSchema, queryKnowledgeGraphSchema } from '../types/knowledge.types';
 
 /**
  * Controller for knowledge graph operations
@@ -26,7 +22,7 @@ export class KnowledgeGraphController {
   async healthCheck(req: Request, res: Response): Promise<void> {
     res.status(200).json({
       status: 'OK',
-      message: 'Knowledge graph service is healthy',
+      message: 'Knowledge graph service is healthy'
     });
   }
 
@@ -45,14 +41,14 @@ export class KnowledgeGraphController {
       res.status(201).json({
         success: true,
         graphId,
-        message: 'Knowledge graph created successfully',
+        message: 'Knowledge graph created successfully'
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }
@@ -75,7 +71,7 @@ export class KnowledgeGraphController {
         res.status(404).json({
           success: false,
           error: 'Not found',
-          message: `Knowledge graph with ID ${id} not found`,
+          message: `Knowledge graph with ID ${id} not found`
         });
         return;
       }
@@ -83,7 +79,7 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(200).json({
         success: true,
-        graph,
+        graph
       });
     } catch (error) {
       next(error);
@@ -104,14 +100,14 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }
@@ -134,14 +130,14 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          details: error.errors,
+          details: error.errors
         });
         return;
       }
@@ -162,7 +158,7 @@ export class KnowledgeGraphController {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          message: 'Name is required and must be a string',
+          message: 'Name is required and must be a string'
         });
         return;
       }
@@ -171,7 +167,7 @@ export class KnowledgeGraphController {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          message: 'Text is required and must be a string',
+          message: 'Text is required and must be a string'
         });
         return;
       }
@@ -182,7 +178,7 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(201).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       next(error);
@@ -201,7 +197,7 @@ export class KnowledgeGraphController {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          message: 'Source graph ID is required and must be a string',
+          message: 'Source graph ID is required and must be a string'
         });
         return;
       }
@@ -210,7 +206,7 @@ export class KnowledgeGraphController {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          message: 'Target graph ID is required and must be a string',
+          message: 'Target graph ID is required and must be a string'
         });
         return;
       }
@@ -221,7 +217,7 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(200).json({
         success: true,
-        ...result,
+        ...result
       });
     } catch (error) {
       next(error);
@@ -241,7 +237,7 @@ export class KnowledgeGraphController {
       // Return the result
       res.status(200).json({
         success,
-        message: `Knowledge graph with ID ${id} deleted successfully`,
+        message: `Knowledge graph with ID ${id} deleted successfully`
       });
     } catch (error) {
       next(error);
@@ -260,7 +256,7 @@ export class KnowledgeGraphController {
         res.status(400).json({
           success: false,
           error: 'Validation error',
-          message: 'Confidence must be a number between 0 and 1',
+          message: 'Confidence must be a number between 0 and 1'
         });
         return;
       }
@@ -273,7 +269,7 @@ export class KnowledgeGraphController {
         success: true,
         entityId,
         confidence,
-        confidenceLevel,
+        confidenceLevel
       });
     } catch (error) {
       next(error);

@@ -10,7 +10,7 @@ import {
   KnowledgeSourceType,
   createKnowledgeGraphSchema,
   extractKnowledgeSchema,
-  queryKnowledgeGraphSchema,
+  queryKnowledgeGraphSchema
 } from '../types/knowledge.types';
 
 /**
@@ -178,7 +178,7 @@ export class KnowledgeGraphService {
   async createKnowledgeGraphFromText(
     name: string,
     text: string,
-    options?: Partial<KnowledgeExtractionParams>,
+    options?: Partial<KnowledgeExtractionParams>
   ): Promise<{ graphId: string; extractionResult: KnowledgeExtractionResult }> {
     try {
       // Create the knowledge graph
@@ -188,7 +188,7 @@ export class KnowledgeGraphService {
       const extractionResult = await this.extractKnowledge({
         text,
         existingGraphId: graphId,
-        ...options,
+        ...options
       });
 
       return { graphId, extractionResult };
@@ -272,7 +272,7 @@ export class KnowledgeGraphService {
       minConfidence?: number;
       overwriteExisting?: boolean;
       sourceLabel?: string;
-    },
+    }
   ): Promise<{ entitiesCount: number; relationshipsCount: number }> {
     try {
       // Get the source and target graphs
@@ -299,8 +299,8 @@ export class KnowledgeGraphService {
           ...e,
           source: {
             ...e.source,
-            name: `${e.source.name} (${options.sourceLabel})`,
-          },
+            name: `${e.source.name} (${options.sourceLabel})`
+          }
         }));
       }
 
@@ -336,7 +336,7 @@ export class KnowledgeGraphService {
    */
   async deleteKnowledgeGraph(graphId: string): Promise<boolean> {
     const session = this.knowledgeGraphQueries.driver.session({
-      database: this.knowledgeGraphQueries.database,
+      database: this.knowledgeGraphQueries.database
     });
 
     try {
@@ -348,8 +348,8 @@ export class KnowledgeGraphService {
           OPTIONAL MATCH (r:Relationship)-[:FROM|TO]->(:Entity)-[:BELONGS_TO]->(g)
           DETACH DELETE r, e, g
           `,
-          { graphId },
-        ),
+          { graphId }
+        )
       );
 
       return true;

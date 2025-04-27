@@ -8,7 +8,7 @@ export enum EmbeddingProvider {
   OPENAI = 'openai',
   COHERE = 'cohere',
   HUGGINGFACE = 'huggingface',
-  CUSTOM = 'custom',
+  CUSTOM = 'custom'
 }
 
 /**
@@ -42,7 +42,7 @@ export const EMBEDDING_MODEL_CONFIGS: Record<EmbeddingModel, EmbeddingModelConfi
     maxTokens: 8191,
     supportsBatching: true,
     supportsMultimodal: false,
-    defaultSimilarityMetric: 'cosine',
+    defaultSimilarityMetric: 'cosine'
   },
   [EmbeddingModel.OPENAI_TEXT_3_SMALL]: {
     name: 'text-embedding-3-small',
@@ -51,7 +51,7 @@ export const EMBEDDING_MODEL_CONFIGS: Record<EmbeddingModel, EmbeddingModelConfi
     maxTokens: 8191,
     supportsBatching: true,
     supportsMultimodal: false,
-    defaultSimilarityMetric: 'cosine',
+    defaultSimilarityMetric: 'cosine'
   },
   [EmbeddingModel.OPENAI_TEXT_3_LARGE]: {
     name: 'text-embedding-3-large',
@@ -60,8 +60,8 @@ export const EMBEDDING_MODEL_CONFIGS: Record<EmbeddingModel, EmbeddingModelConfi
     maxTokens: 8191,
     supportsBatching: true,
     supportsMultimodal: false,
-    defaultSimilarityMetric: 'cosine',
-  },
+    defaultSimilarityMetric: 'cosine'
+  }
 };
 
 /**
@@ -79,5 +79,5 @@ export interface EmbeddingModelRetrieveParams {
  */
 export const embeddingModelParamsSchema = z.object({
   embeddingModel: z.nativeEnum(EmbeddingModel).optional().default(EmbeddingModel.OPENAI_TEXT_3_SMALL),
-  similarityMetric: z.enum(['cosine', 'euclidean', 'dot_product']).optional(),
+  similarityMetric: z.enum(['cosine', 'euclidean', 'dot_product']).optional()
 });
